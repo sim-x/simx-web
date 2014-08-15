@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-**SimX**: A Parallel Simulation Library for Python
+**SimX**: Parallel Simulation Library for Python
 ====================================================
 
 SimX is a library for developing parallel, discrete-event simulations in Python. Written in C++ and Python, SimX enables rapid development of parallel simulations entirely in Python by providing the simulation modeler with core functionality such as processes, event queuing, time advancement, domain partitioning, synchronization and message passing. 
@@ -21,6 +21,7 @@ Prebuilt packages are available for Fedora 19 and 20. First add the following re
 
   > sudo yum-config-manager \ 
     --add-repo=http://download.opensuse.org/repositories/Education/Fedora_<v>/Education.repo
+
 Replace 'v' with your Fedora release number in the above command. Then::
 
   > sudo yum install python-simx
@@ -66,6 +67,7 @@ make sure ``/opt/local/bin`` (or whatever path macports binaries are located in)
 ..   :maxdepth: 2
 
 
+:doc:`simx-doc`
 
 Indices and tables
 ==================
