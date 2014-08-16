@@ -1,16 +1,45 @@
+
 Introduction
+====================================================
+
+SimX is a library for developing parallel, discrete-event simulations in Python. Written in C++ and Python, SimX enables rapid development of distributed-memory, parallel simulations in Python by providing the simulation modeler with core functionality such as processes, event queuing, time advancement, domain partitioning, synchronization and message passing. 
+
+SimX has been designed for both ease-of-use and scalability; applications built using SimX can be executed on multi-core workstations or high performance clusters and can also be easily integrated with other Python tools for scientific computing. 
+
+:doc:`A more detailed introduction <det_intro>` 
+
+.. SimX is free software, available under the :ref:`GNU LGPL license <license>`.
+
+
+Installation
 =============
 
-SimX is a generic library for developing parallel, discrete event simulations in Python for simulating large, complex systems,  designed for both scalability and ease of use. Often while developing parallel simulations, the simulation developer has to take into account issues such as synchronization, distributed message passing and object serialization, to name a few; these tasks often involve steep learning curves and considerable software engineering expertise. 
+See the :doc:`Download and Installation <install>` page.
 
-SimX has been designed with these issues in mind: the main goal was to enable domain researchers to rapidly develop simulation applications and deploy it on clusters without having to get bogged down by the intricacies of parallel programming, managing MPI communication or worry about issues such as load balancing.
+.. Contents:
 
-For scalability and performance, the core of SimX is written in C++, providing it with speed for frequently used functionality such as event-queueing, time advancement, domain partitioning and synchronization. APIs needed to develop a simulation application are exported to Python from C++; these along with Python wrappers in SimX enable application developers to program entirely in Python. 
+ .. .. toctree::
+ ..   :maxdepth: 2
+ ..   :hidden:
+	      
+ ..   install.rst 
+ ..   getting-started.rst
 
-Message passing uses the object serialization facility already present in Python via the fast `cPickles <https://docs.python.org/2.7/library/pickle.html#module-cPickle>`_ serialization library in combination with `MPI <http://mpich.org>`_. Any arbitrary Python object that can be serialized (or pickled, as it known in Python parlance) can be sent and received between simulation processes.
 
-SimX also supports process oriented simulation, with the facility of suspending an executing simulated process and re-entering at the point of suspension. This is implemented using the Python `greenlets <http://greenlet.readthedocs.org/en/latest/>`_  module that can be used to simuate a large number of concurrent processes with very little overhead. A process oriented often greatly simplify the implementation of simulation models, especially those used for computer systems modeling.
 
-While the flexibility of Python comes with a performance cost, the implementation of the core functionality in C++ provides a reasonable trade- off between ease-of-use and performance. For situations where performance is an over-riding concern, computationally intensive parts of the program can be re-written in pure C++. In fact the entire simulation application itself can be written in C++ as SimX allows for applications to be pure Python, a Python/C++ hybrid or even pure C++.
+Using SimX
+===========
 
-* Further Reading: *Sunil Thulasidasan, Lukas Kroc, Stephan Eidenbenz*, **Developing Parallel Discrete Event Simulations in Python: First Results and User Experiences with the SimX Library**, Proceedings of the 4th International Conference Simulation and Modeling Methodologies, Technologies and Applications (SIMULTECH 2014), Vienna, Austria `[PDF] <http://public.lanl.gov/sunil/pubs/simx.pdf>`_
+See the :doc:`getting started with SimX <getting-started>` section for some usage examples on how to set up a parallel simulation with SimX.
+
+
+
+
+License
+========
+
+SimX is free software; the latest version of the source code is available on `github <http://github.com/sim-x>`_.  You can redistribute it and/or  modify it under the terms of the `GNU Lesser General Public  License <http://www.gnu.org/licenses/lgpl-2.1.html>`_  version 2.1 as published by the `Free Software Foundation <http://www.fsf.org>`_
+
+.. :doc:`simx-doc`
+
+
