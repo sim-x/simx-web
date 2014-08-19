@@ -21,8 +21,8 @@ Building from source
 Building from sources is a two-step process: installing the SimX dependencies and then building the SimX sources. 
 
 
-Installing Software Prerequisites
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Step 1** Install Software Prerequisites
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The software packages  required prior to building SimX are
 
 * `CMake <http://www.cmake.org>`_
@@ -72,8 +72,8 @@ Once you  have succesfully installed the prerequisite packages, proceed to :ref:
 
 .. _install:
 
-Building and Installing Simx
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Step 2** Build and Install SimX 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 After installing the required packages, as described above, The build process is the same for any UNIX like platform (GNU/Linux, OS-X etc.) First download the the SimX source files, via one of the following methods:
 
@@ -89,9 +89,9 @@ After extracting the tarball, change to the source root directory and type::
 
      python setup.py install
 
-This will build SimX and install it to the appropriate Python site-packages directory. In the process, it will also automatically download and install the `greenlets <https://pypi.python.org/pypi/greenlet>`_, a required module for simulating processes in SimX.
+This will build SimX and install it to the appropriate Python site-packages directory. In the process, it will also automatically download and install `greenlets <https://pypi.python.org/pypi/greenlet>`_, a required module for simulating processes in SimX.
 
-To install the SimX package in the user directory, type::
+By default, SimX is installed into the system Python directories. To install into the user directory instead, type::
 
   python setup.py install --user
 
@@ -101,8 +101,8 @@ This will build and install SimX under the user's home directory. Python
 
 .. _mpi:
 
-MPI Option
-******************
+Bulding without MPI
+********************
 
 SimX uses MPI for message passing and synchronization in parallel simulations, specifically the MPICH implementation of MPI. If you do not wish to enable parallel simulations, SimX can be installed without parallel support. To do this, type::
 
@@ -118,14 +118,14 @@ By default SimX is built with the bundled `miniSSF library <http://www.primessf.
  python setup.py build --without-ssf
  python setup.py install
 
-This alternative build requires MPI (even for non-parallel simulations, at this point); it also requires that your MPI installation  be fully multi-threaded (on the otherhand, SSF can run on both single and multi-threaded MPI). Depending on your computational setup and simulation needs, one or the other might perform better.  
+This alternative build requires MPI (even for non-parallel builds); it also requires that your MPI installation  be fully multi-threaded (on the otherhand, SSF can run on both single and multi-threaded MPI). Depending on your computational setup and simulation needs, one or the other might perform better.  
 
  .. note::
 
   If disabling MPI, SimX will use miniSSF.
 
 
-At this point, SimX is ready to be used like any other Python module.
+Once the above steps are completed, SimX is ready to be used like any other Python module.
 
 .. code-block:: python
 

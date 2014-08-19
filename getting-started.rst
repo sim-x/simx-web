@@ -26,7 +26,8 @@ Let's try and build a non-trivial but instructive case that illustrates some of 
 A HelloWorld Example
 ============================
 
-The main objects in a SimX simulation application are  Entities, Processes and  Services. Entities represent physical objects ( e.g. an agent) while services (which live on entities) represent the behavior of an agent. Processes represent simulated threads that execute concurrently 
+The main objects in a SimX simulation application are  Entities and Services. Entities represent physical objects ( e.g. an agent) while services (which live on entities) represent the behavior of an agent. 
+.. Processes represent simulated threads that execute concurrently 
 
 Let us consider a simple ``HelloWorld``  example that consists of a  number of :class:`Person` entities and a :class:`HelloHandler` service attached to a :class:`Person` object.  In our simple set up, when a :class:`HelloHandler` service receives a :class:`Hello` message, it sends a :class:`Reply` message to the sending :class:`Person`, delivered at some specified time. 
 
@@ -47,7 +48,7 @@ Each entity in a SimX application inherits from the :class:`PyEntity <simx.core.
 .. The current simulation time is always available to entities (as well as services) via the \texttt{get\_now()} method.
 
 
-Information regarding which services are to be created on the entity is passed to the entity via the :class:`entity_input <simx.core.core.EntityInput>` object. The :meth:`create_services <simx.core.core.PyEntity.create_services>` method is used to explicitly create services on an entity. While some initializations have been omitted here, the code above captures the essence of the Python class definition.
+Additional parameters are passed to the entity constructor via the :class:`entity_input` object. The :meth:`install_service <simx.pyentity_ext.install_service>` method is used to explicitly create services on an entity. While some initializations have been omitted here, the code above captures the essence of the Python class definition.
 
 Let us also define  the two message objects, :class:`Hello` and :class:`Reply` which are quite simply:
 
@@ -66,7 +67,7 @@ Next consider the :class:`HelloHandler` service that lives on a :class:`Person`.
 
 .. literalinclude:: hellohandler.py
 
-Each service object in a SimX application inherits from the :class:`PyService <simx.core.core.PyService>` class exported from SimX. At creation time, a service is informed of its identity, the entity on which it lives  and any input parameters that have been passed in. Since a service and its entity always lives in the same memory space, all the  entity functions and data members are available to a service object.
+Each service object in a SimX application inherits from the :class:`PyService <simx.core.core.PyService>` class exported from SimX. At creation time, a service is informed of its identity, the entity on which it lives  and any input parameters that have been passed in. Since a service and its entity always live in the same memory space, all the  entity functions and data members are available to a service object.
 
 The :meth:`send_info <simx.core.core.PyService.send_info>` method referenced above is the communication work-horse of SimX and  follows the simple ``(what, when, who, where)`` paradigm. The parameters to it are:
 
@@ -143,7 +144,7 @@ The above command produces the following output::
   [ EVENT RATE: 7772.56 (evts/s) ]
 
 
-Note that the 4-processor MPI run above actually ran slower than the single processor run. Welcome to the world of parallel simulations!  Remember that parallelism induces overhead, since processes have to synchronize periodically. The synchronization frequency is determined by the value supplied to the :meth:`set_min_delay <simx.config.set_min_delay>` method. The benefits of parallelism usually become apparent only for significantly large workloads; thus, a maxim to keep in mind for parallel simulations is:
+Note that the 4-processor MPI run above actually ran slower than the single processor run. Welcome to the world of parallel simulations! Parallelism induces overhead since processes have to synchronize periodically, and the synchronization frequency is determined by the value supplied to the :meth:`set_min_delay <simx.config.set_min_delay>` method. The benefits of parallelism usually become apparent only for significantly large workloads; thus, a maxim to keep in mind for parallel simulations is:
 
 .. note::
 
