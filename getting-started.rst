@@ -20,13 +20,14 @@ Once you have built and installed SimX, as described in the :doc:`installation <
 
 The above code snippet simply initializes the simulation environment, and runs a dummy simulation (without any events) for 10 time units. 
 
-Let's try and build a non-trivial but instructive case that illustrates some of the pertinent features of SimX.
+Let's try and build a simple but non-trivial case that illustrates how to set up a simulation in SimX.
 
 
 A HelloWorld Example
 ============================
 
 The main objects in a SimX simulation application are  Entities and Services. Entities represent physical objects ( e.g. an agent) while services (which live on entities) represent the behavior of an agent. 
+
 .. Processes represent simulated threads that execute concurrently 
 
 Let us consider a simple ``HelloWorld``  example that consists of a  number of :class:`Person` entities and a :class:`HelloHandler` service attached to a :class:`Person` object.  In our simple set up, when a :class:`HelloHandler` service receives a :class:`Hello` message, it sends a :class:`Reply` message to the sending :class:`Person`, delivered at some specified time. 
